@@ -99,11 +99,15 @@ body {
 
 .section-kicker {
   display: inline-block;
-  font-size: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--sky) 35%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sky) 8%, white);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--sky);
+  color: var(--navy);
 }
 
 .section-title {
@@ -125,6 +129,8 @@ body {
 }
 
 .section-kicker.on-dark {
+  border-color: rgba(126, 204, 235, 0.35);
+  background: rgba(255, 255, 255, 0.08);
   color: #7ecceb;
 }
 

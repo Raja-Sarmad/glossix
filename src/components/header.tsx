@@ -50,41 +50,25 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
-  const onDark = !scrolled && !open;
-
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        onDark
-          ? "border-b border-white/10 bg-[#071829]/92 backdrop-blur-xl"
-          : "border-b border-[#d7e0ea] bg-white/95 shadow-[0_10px_30px_rgba(21,34,56,0.08)] backdrop-blur-xl"
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        scrolled || open
+          ? "border-[#d7e0ea] bg-white/95 shadow-[0_10px_30px_rgba(21,34,56,0.08)] backdrop-blur-xl"
+          : "border-[#d7e0ea]/70 bg-[#f7fbfe]/85 backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center gap-4 px-4 sm:px-8">
         <a href="#top" className="group flex shrink-0 items-center gap-2.5">
-          <span
-            className={`grid h-9 w-9 place-items-center rounded-xl text-[11px] font-extrabold tracking-[0.12em] transition ${
-              onDark
-                ? "bg-[#e8b84a] text-[#071829] group-hover:bg-[#f3d06a]"
-                : "bg-[#0c2d5c] text-white group-hover:bg-[#071829]"
-            }`}
-          >
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#0c2d5c] text-[11px] font-extrabold tracking-[0.12em] text-white transition group-hover:bg-[#071829]">
             GX
           </span>
-          <span
-            className={`text-[1.15rem] font-extrabold tracking-tight ${
-              onDark ? "text-white" : "text-[#0c2d5c]"
-            }`}
-          >
+          <span className="text-[1.15rem] font-extrabold tracking-tight text-[#0c2d5c]">
             Glossix
           </span>
         </a>
 
-        <nav
-          className={`mx-auto hidden items-center gap-1 rounded-full p-1 lg:flex ${
-            onDark ? "bg-white/8" : "bg-[#f3f6fa]"
-          }`}
-        >
+        <nav className="mx-auto hidden items-center gap-1 rounded-full bg-white/80 p-1 shadow-sm ring-1 ring-[#d7e0ea] lg:flex">
           {links.map((link) => {
             const isActive = active === link.id;
             return (
@@ -93,12 +77,8 @@ export function Header() {
                 href={link.href}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   isActive
-                    ? onDark
-                      ? "bg-white text-[#071829] shadow-sm"
-                      : "bg-white text-[#0c2d5c] shadow-sm"
-                    : onDark
-                      ? "text-white/80 hover:bg-white/10 hover:text-white"
-                      : "text-[#3d4d63] hover:bg-white hover:text-[#0c2d5c]"
+                    ? "bg-[#0c2d5c] text-white shadow-sm"
+                    : "text-[#3d4d63] hover:bg-[#f3f6fa] hover:text-[#0c2d5c]"
                 }`}
               >
                 {link.label}
@@ -110,41 +90,33 @@ export function Header() {
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
           <a
             href="#formula"
-            className={`hidden rounded-full px-5 py-2.5 text-sm font-bold transition sm:inline-flex ${
-              onDark
-                ? "bg-[#e8b84a] text-[#071829] hover:bg-[#f3d06a]"
-                : "bg-[#0c2d5c] text-white hover:bg-[#071829]"
-            }`}
+            className="hidden rounded-full bg-[#0c2d5c] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#071829] sm:inline-flex"
           >
             See formula
           </a>
 
           <button
             type="button"
-            className={`grid h-10 w-10 place-items-center rounded-xl border transition lg:hidden ${
-              onDark
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-[#d7e0ea] text-[#152238] hover:bg-[#f3f6fa]"
-            }`}
+            className="grid h-10 w-10 place-items-center rounded-xl border border-[#d7e0ea] bg-white text-[#152238] transition hover:bg-[#f3f6fa] lg:hidden"
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((value) => !value)}
           >
             <span className="flex w-[18px] flex-col gap-[5px]">
               <span
-                className={`h-[2px] w-full rounded-full transition ${
-                  onDark ? "bg-white" : "bg-[#152238]"
-                } ${open ? "translate-y-[7px] rotate-45" : ""}`}
+                className={`h-[2px] w-full rounded-full bg-[#152238] transition ${
+                  open ? "translate-y-[7px] rotate-45" : ""
+                }`}
               />
               <span
-                className={`h-[2px] w-full rounded-full transition ${
-                  onDark ? "bg-white" : "bg-[#152238]"
-                } ${open ? "opacity-0" : ""}`}
+                className={`h-[2px] w-full rounded-full bg-[#152238] transition ${
+                  open ? "opacity-0" : ""
+                }`}
               />
               <span
-                className={`h-[2px] w-full rounded-full transition ${
-                  onDark ? "bg-white" : "bg-[#152238]"
-                } ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+                className={`h-[2px] w-full rounded-full bg-[#152238] transition ${
+                  open ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
               />
             </span>
           </button>
@@ -152,13 +124,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <div
-          className={`border-t px-4 py-5 lg:hidden ${
-            onDark
-              ? "border-white/10 bg-[#071829]"
-              : "border-[#d7e0ea] bg-white"
-          }`}
-        >
+        <div className="border-t border-[#d7e0ea] bg-white px-4 py-5 lg:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col gap-2">
             {links.map((link) => {
               const isActive = active === link.id;
@@ -169,12 +135,8 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className={`rounded-xl px-4 py-3 text-base font-bold transition ${
                     isActive
-                      ? onDark
-                        ? "bg-white/12 text-[#e8b84a]"
-                        : "bg-[#f3f6fa] text-[#0c2d5c]"
-                      : onDark
-                        ? "text-white hover:bg-white/8"
-                        : "text-[#152238] hover:bg-[#f3f6fa]"
+                      ? "bg-[#f3f6fa] text-[#0c2d5c]"
+                      : "text-[#152238] hover:bg-[#f3f6fa]"
                   }`}
                 >
                   {link.label}
@@ -184,11 +146,7 @@ export function Header() {
             <a
               href="#formula"
               onClick={() => setOpen(false)}
-              className={`mt-2 rounded-xl px-4 py-3 text-center text-sm font-bold ${
-                onDark
-                  ? "bg-[#e8b84a] text-[#071829]"
-                  : "bg-[#0c2d5c] text-white"
-              }`}
+              className="mt-2 rounded-xl bg-[#0c2d5c] px-4 py-3 text-center text-sm font-bold text-white"
             >
               See formula
             </a>
