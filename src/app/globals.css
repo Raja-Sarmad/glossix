@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0c2d5c;
+  --navy-deep: #071829;
+  --gold: #c9952e;
+  --gold-soft: #e8b84a;
+  --sky: #1f8fc4;
+  --bg: #ffffff;
+  --bg-soft: #f3f6fa;
+  --text: #152238;
+  --text-soft: #3d4d63;
+  --line: #d7e0ea;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(31, 143, 196, 0.22);
+  color: #071829;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float-y 5.5s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+
+.hero-in {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.d1 {
+  animation-delay: 0.08s;
+}
+.d2 {
+  animation-delay: 0.18s;
+}
+.d3 {
+  animation-delay: 0.3s;
+}
+.d4 {
+  animation-delay: 0.42s;
+}
+
+.section-head {
+  margin-inline: auto;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.section-title {
+  margin-top: 0.7rem;
+  font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+
+.section-lead {
+  margin: 0.9rem auto 0;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.section-kicker.on-dark {
+  color: #7ecceb;
+}
+
+.section-title.on-dark {
+  color: #ffffff;
+}
+
+.section-lead.on-dark {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-float,
+  .animate-glow,
+  .hero-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
