@@ -1,140 +1,83 @@
 import Image from "next/image";
+import {
+  ArrowRightIcon,
+  DropletIcon,
+  LeafIcon,
+  ShieldCheckIcon,
+  SparkleIcon,
+} from "./icons";
 
-const highlights = [
-  "Helps brighten and even skin tone from within",
-  "Supports clearer-looking, calmer skin",
-  "500mg glutathione with collagen & vitamin C",
-  "Simple 2× daily ritual — 30 capsules",
+const features = [
+  { label: "Brightens skin tone", Icon: SparkleIcon },
+  { label: "Reduces dark spots", Icon: DropletIcon },
+  { label: "Hydrates & nourishes", Icon: LeafIcon },
+  { label: "Safe daily support", Icon: ShieldCheckIcon },
 ];
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section
+      id="top"
+      className="relative flex min-h-[min(100svh-4.5rem,640px)] overflow-hidden bg-[#f7fafc] sm:min-h-[min(100svh-4.5rem,720px)]"
+    >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[#f3f8fc]" />
-        <div className="absolute inset-y-0 right-0 w-full bg-[linear-gradient(105deg,#f3f8fc_0%,#f3f8fc_50%,#e4f1f9_50%,#d8ebf6_100%)] lg:w-auto lg:left-[50%]" />
-        <div className="absolute top-0 right-0 h-[70%] w-[55%] bg-[radial-gradient(ellipse_at_70%_30%,rgba(42,155,199,0.22),transparent_60%)]" />
-        <div className="absolute bottom-0 left-0 h-[40%] w-[40%] bg-[radial-gradient(ellipse_at_20%_90%,rgba(201,162,39,0.12),transparent_60%)]" />
+        <Image
+          src="/heroimage.jpg"
+          alt=""
+          fill
+          preload
+          unoptimized
+          className="object-cover object-[78%_center] sm:object-[72%_center]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/45 to-white/80 sm:from-transparent sm:via-transparent sm:to-transparent sm:bg-none" />
+        <div className="absolute inset-y-0 left-0 hidden w-full max-w-2xl bg-gradient-to-r from-white/75 via-white/35 to-transparent sm:block lg:w-[52%]" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:py-14">
-        {/* LEFT — story + content */}
-        <div className="order-2 lg:order-1">
-          <div className="hero-in d1 inline-flex items-center gap-2 rounded-full border border-[#c9a227]/35 bg-white px-3.5 py-1.5 text-[11px] font-bold tracking-[0.14em] text-[#0a2756] uppercase shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#c9a227]" />
-            Inovics Healthcare · Premium formula
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end px-4 py-8 sm:items-center sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div className="w-full max-w-xl rounded-2xl bg-white/90 p-4 shadow-[0_8px_40px_rgba(15,23,42,0.08)] sm:rounded-3xl sm:bg-white/70 sm:p-7 lg:bg-transparent lg:p-0 lg:shadow-none">
+          <div className="inline-flex max-w-full rounded-full bg-[#fef3c7] px-3 py-1.5 text-[10px] font-extrabold tracking-[0.08em] text-[#92400e] uppercase shadow-sm sm:px-3.5 sm:text-[11px] sm:tracking-[0.1em]">
+            Visibly brighter skin in weeks
           </div>
 
-          <h1 className="hero-in d2 brand-mark mt-4 text-[clamp(3rem,6.5vw,4.6rem)] leading-[0.98] text-[#0a2756]">
-            Glossix
+          <h1 className="mt-4 text-[clamp(2rem,8vw,3.9rem)] leading-[1.08] font-extrabold tracking-[-0.03em] text-[#1e1b4b] sm:mt-5">
+            Your Natural Glow,{" "}
+            <span className="bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">
+              Reimagined
+            </span>
           </h1>
 
-          <p className="hero-in d3 mt-3 text-[clamp(1.25rem,2.5vw,1.6rem)] font-semibold tracking-[-0.02em] text-[#314860]">
-            Brighter skin,{" "}
-            <span className="gold-text">from within.</span>
+          <p className="mt-3 max-w-md text-[0.95rem] leading-7 text-[#334155] sm:mt-4 sm:text-[1.02rem]">
+            Glossix glutathione complex with collagen and vitamin C — expert
+            nutrition for a clearer, calmer, brighter-looking glow from within.
           </p>
 
-          <p className="hero-in d3 mt-4 max-w-lg text-[1.05rem] leading-7 text-[#4a5d75]">
-            A glutathione complex made to support a clearer, more even glow —
-            with collagen and vitamin C for everyday skin nutrition your clients
-            can understand.
-          </p>
-
-          <ul className="hero-in d4 mt-6 max-w-lg space-y-2.5">
-            {highlights.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-[0.98rem] font-medium text-[#24384f]"
-              >
-                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#0a2756] text-[10px] font-extrabold text-[#e4c15a]">
-                  ✓
+          <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-3.5 sm:mt-7 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+            {features.map(({ label, Icon }) => (
+              <div key={label} className="flex flex-col items-start gap-1.5 sm:gap-2">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#7c3aed] shadow-md ring-1 ring-[#e2e8f0] sm:h-11 sm:w-11">
+                  <Icon size={17} />
                 </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="hero-in d4 mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#benefits"
-              className="rounded-full bg-gradient-to-b from-[#e4c15a] to-[#c9a227] px-7 py-3.5 text-sm font-extrabold text-[#061a38] shadow-[0_12px_28px_rgba(201,162,39,0.32)] transition hover:-translate-y-0.5 hover:brightness-105"
-            >
-              Explore benefits
-            </a>
-            <a
-              href="#formula"
-              className="rounded-full border border-[#0a2756]/15 bg-white px-7 py-3.5 text-sm font-extrabold text-[#0a2756] shadow-sm transition hover:border-[#2a9bc7]/40"
-            >
-              View formula
-            </a>
-          </div>
-
-          <div className="hero-in d4 mt-7 grid max-w-lg grid-cols-3 gap-2">
-            {[
-              ["500mg", "Glutathione"],
-              ["4", "Actives"],
-              ["2×", "Daily"],
-            ].map(([value, label]) => (
-              <div
-                key={label}
-                className="rounded-xl border border-[#c9d8e6] bg-white/90 px-2 py-3 text-center shadow-sm"
-              >
-                <p className="text-lg font-extrabold text-[#0a2756] sm:text-xl">
-                  {value}
-                </p>
-                <p className="mt-0.5 text-[10px] font-semibold tracking-wide text-[#4a5d75] uppercase sm:text-[11px]">
+                <p className="text-[10px] leading-snug font-bold text-[#334155] sm:text-[11px]">
                   {label}
                 </p>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* RIGHT — product home */}
-        <div className="order-1 lg:order-2">
-          <div className="hero-in d2 relative mx-auto w-full max-w-[420px] lg:max-w-[440px]">
-            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#0a2756] via-[#0d356e] to-[#143f7a] px-5 pt-8 pb-6 shadow-[0_30px_70px_rgba(10,39,86,0.28)] sm:px-7 sm:pt-10 sm:pb-7">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_35%,rgba(80,180,230,0.35),transparent_65%)]" />
-              <div className="pointer-events-none absolute -top-10 right-[-10%] h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(228,193,90,0.2),transparent_70%)]" />
-
-              <div className="relative z-10 text-center">
-                <p className="text-[11px] font-bold tracking-[0.18em] text-[#e4c15a] uppercase">
-                  Skin whitening support
-                </p>
-                <p className="mt-1 text-sm font-semibold text-white/80">
-                  Bottle + box · ready for clients
-                </p>
-              </div>
-
-              <div className="relative z-10 mx-auto mt-4 w-[85%] max-w-[300px]">
-                <Image
-                  src="/glossix.png"
-                  alt="Glossix bottle and box — 30 capsules"
-                  width={1251}
-                  height={1091}
-                  preload
-                  loading="eager"
-                  unoptimized
-                  className="animate-float relative mx-auto h-auto w-full drop-shadow-[0_24px_40px_rgba(0,0,0,0.35)]"
-                />
-              </div>
-
-              <div className="relative z-10 mt-5 grid grid-cols-2 gap-2">
-                <div className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
-                  <p className="text-sm font-extrabold text-white">30 capsules</p>
-                  <p className="mt-0.5 text-[11px] font-medium text-white/70">
-                    Full pack size
-                  </p>
-                </div>
-                <div className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
-                  <p className="text-sm font-extrabold text-[#e4c15a]">
-                    Premium quality
-                  </p>
-                  <p className="mt-0.5 text-[11px] font-medium text-white/70">
-                    Clinician-ready story
-                  </p>
-                </div>
-              </div>
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <a
+              href="#order"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-7 py-3.5 text-sm font-extrabold text-white shadow-[0_12px_28px_rgba(79,70,229,0.35)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto"
+            >
+              Shop Now
+              <ArrowRightIcon size={16} />
+            </a>
+            <div className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#475569] shadow-sm ring-1 ring-[#e2e8f0] sm:w-auto sm:justify-start sm:text-sm">
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#ede9fe] text-[#7c3aed]">
+                <ShieldCheckIcon size={14} />
+              </span>
+              100% Money Back Guarantee
             </div>
           </div>
         </div>

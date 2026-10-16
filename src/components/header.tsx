@@ -1,19 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CartIcon, LeafIcon } from "./icons";
 
 const links = [
-  { href: "#benefits", id: "benefits", label: "Benefits" },
-  { href: "#science", id: "science", label: "Science" },
-  { href: "#formula", id: "formula", label: "Formula" },
-  { href: "#ritual", id: "ritual", label: "How to use" },
-  { href: "#faq", id: "faq", label: "FAQ" },
+  { href: "#top", label: "Home" },
+  { href: "#benefits", label: "Benefits" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#faq", label: "FAQ" },
 ];
+
+const activeClass =
+  "text-[#7c3aed] underline decoration-[#7c3aed] decoration-2 underline-offset-8";
+const idleClass = "text-[#475569] hover:text-[#7c3aed]";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("#top");
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -23,63 +28,64 @@ export function Header() {
   }, [open]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const sectionIds = links.map((l) => l.href.slice(1));
 
-  useEffect(() => {
-    const sections = links
-      .map((link) => document.getElementById(link.id))
-      .filter((el): el is HTMLElement => Boolean(el));
+    const update = () => {
+      setScrolled(window.scrollY > 8);
 
-    if (!sections.length) return;
+      const offset = 120;
+      let current = "#top";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top - offset <= 0) {
+          current = `#${id}`;
+        }
+      }
+      setActive(current);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target?.id) setActive(visible.target.id);
-      },
-      { rootMargin: "-35% 0px -45% 0px", threshold: [0.1, 0.25, 0.5] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("hashchange", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("hashchange", update);
+    };
   }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-        scrolled || open
-          ? "border-[#c9d8e6]/90 bg-white/92 shadow-[0_10px_30px_rgba(10,39,86,0.07)] backdrop-blur-xl"
-          : "border-transparent bg-[#f3f8fc]/80 backdrop-blur-md"
+      className={`sticky top-0 z-50 transition-all ${
+        scrolled
+          ? "border-b border-[#e2e8f0] bg-white/95 shadow-sm backdrop-blur-xl"
+          : "bg-white/70 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
-        <a href="#top" className="group flex shrink-0 items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-[#0a2756] to-[#143a72] text-[11px] font-extrabold tracking-[0.12em] text-[#e4c15a] shadow-[0_6px_16px_rgba(10,39,86,0.25)] transition group-hover:brightness-110">
-            GX
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-4 sm:h-[4.5rem] sm:gap-3 sm:px-6 lg:px-8">
+        <a href="#top" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-2.5">
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#4f46e5] to-[#7c3aed] text-white sm:h-9 sm:w-9">
+            <LeafIcon size={16} />
           </span>
-          <span className="brand-mark text-[1.35rem] text-[#0a2756]">
-            Glossix
+          <span className="min-w-0">
+            <span className="block text-base leading-none font-extrabold tracking-tight text-[#1e1b4b] sm:text-[1.15rem]">
+              Glossix
+            </span>
+            <span className="mt-0.5 hidden text-[10px] font-medium text-[#64748b] sm:block">
+              Brighter Skin. From Within.
+            </span>
           </span>
         </a>
 
-        <nav className="mx-auto hidden items-center gap-1 rounded-full bg-white/80 p-1 shadow-[0_4px_20px_rgba(10,39,86,0.06)] ring-1 ring-[#c9d8e6]/80 backdrop-blur-sm lg:flex">
+        <nav className="mx-auto hidden items-center gap-5 xl:gap-7 lg:flex">
           {links.map((link) => {
-            const isActive = active === link.id;
+            const isActive = active === link.href;
             return (
               <a
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  isActive
-                    ? "bg-[#0a2756] text-white shadow-sm"
-                    : "text-[#4a5d75] hover:bg-[#eaf3f8] hover:text-[#0a2756]"
-                }`}
+                onClick={() => setActive(link.href)}
+                className={`whitespace-nowrap text-sm font-semibold transition ${isActive ? activeClass : idleClass}`}
               >
                 {link.label}
               </a>
@@ -87,56 +93,56 @@ export function Header() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+        <div className="ml-auto flex items-center gap-2 sm:gap-2.5 lg:ml-0">
           <a
-            href="#formula"
-            className="hidden rounded-full bg-gradient-to-b from-[#e4c15a] to-[#c9a227] px-5 py-2.5 text-sm font-bold text-[#061a38] shadow-[0_8px_20px_rgba(201,162,39,0.28)] transition hover:brightness-105 sm:inline-flex"
+            href="#order"
+            className="relative grid h-9 w-9 place-items-center rounded-full border border-[#e2e8f0] bg-white text-[#1e1b4b] sm:h-10 sm:w-10"
+            aria-label="Cart"
           >
-            See formula
+            <CartIcon size={17} />
+            <span className="absolute -top-1 -right-1 grid h-4 min-w-4 place-items-center rounded-full bg-[#7c3aed] px-1 text-[10px] font-bold text-white">
+              1
+            </span>
           </a>
-
+          <a
+            href="#order"
+            className="hidden rounded-full bg-[#1e1b4b] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#312e81] sm:inline-flex sm:px-5"
+          >
+            Order Now
+          </a>
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-xl border border-[#c9d8e6] bg-white/80 text-[#13233f] transition hover:bg-white lg:hidden"
-            aria-expanded={open}
+            className="grid h-9 w-9 place-items-center rounded-xl border border-[#e2e8f0] bg-white sm:h-10 sm:w-10 lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
           >
             <span className="flex w-[18px] flex-col gap-[5px]">
-              <span
-                className={`h-[2px] w-full rounded-full bg-[#13233f] transition ${
-                  open ? "translate-y-[7px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-[2px] w-full rounded-full bg-[#13233f] transition ${
-                  open ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`h-[2px] w-full rounded-full bg-[#13233f] transition ${
-                  open ? "-translate-y-[7px] -rotate-45" : ""
-                }`}
-              />
+              <span className={`h-[2px] bg-[#1e1b4b] transition ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+              <span className={`h-[2px] bg-[#1e1b4b] transition ${open ? "opacity-0" : ""}`} />
+              <span className={`h-[2px] bg-[#1e1b4b] transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
             </span>
           </button>
         </div>
       </div>
 
       {open ? (
-        <div className="border-t border-[#c9d8e6] bg-white/95 px-4 py-5 backdrop-blur-xl lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-2">
+        <div className="max-h-[calc(100svh-4rem)] overflow-y-auto border-t border-[#e2e8f0] bg-white px-4 py-4 sm:px-6 lg:hidden">
+          <nav className="flex flex-col gap-1">
             {links.map((link) => {
-              const isActive = active === link.id;
+              const isActive = active === link.href;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`rounded-xl px-4 py-3 text-base font-bold transition ${
+                  onClick={() => {
+                    setActive(link.href);
+                    setOpen(false);
+                  }}
+                  className={`rounded-xl px-3 py-3 text-base font-bold transition ${
                     isActive
-                      ? "bg-[#eaf3f8] text-[#0a2756]"
-                      : "text-[#13233f] hover:bg-[#eaf3f8]"
+                      ? "bg-[#eef2ff] text-[#7c3aed]"
+                      : "text-[#1e1b4b] hover:bg-[#eef2ff]"
                   }`}
                 >
                   {link.label}
@@ -144,11 +150,11 @@ export function Header() {
               );
             })}
             <a
-              href="#formula"
+              href="#order"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-gradient-to-b from-[#e4c15a] to-[#c9a227] px-4 py-3 text-center text-sm font-bold text-[#061a38]"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-[#1e1b4b] px-5 py-3 text-sm font-bold text-white"
             >
-              See formula
+              Order Now
             </a>
           </nav>
         </div>

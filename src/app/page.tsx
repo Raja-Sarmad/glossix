@@ -4,11 +4,9 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import {
   Benefits,
-  Facts,
-  Formula,
-  Process,
-  Ritual,
-  Science,
+  HowItWorks,
+  Offer,
+  Reviews,
 } from "@/components/sections";
 
 export default function Home() {
@@ -18,11 +16,9 @@ export default function Home() {
       <main>
         <Hero />
         <Benefits />
-        <Science />
-        <Formula />
-        <Process />
-        <Ritual />
-        <Facts />
+        <HowItWorks />
+        <Reviews />
+        <Offer />
         <FAQ />
       </main>
       <Footer />

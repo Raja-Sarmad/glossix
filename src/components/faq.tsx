@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PlusIcon } from "./icons";
 
 const faqs = [
   {
@@ -17,11 +18,11 @@ const faqs = [
   },
   {
     q: "Is a higher dose okay?",
-    a: "Glutathione is water-soluble, so extra intake is usually passed in urine. There is still no reported overdose case in the insert — but stay within the recommended range unless a qualified practitioner advises otherwise.",
+    a: "Glutathione is water-soluble, so extra intake is usually passed in urine. Stay within the recommended range unless a qualified practitioner advises otherwise.",
   },
   {
     q: "What makes Glossix different?",
-    a: "It is not only about lighter tone. Glutathione also works as an antioxidant and anti-aging nutrient, and the insert notes dermatologist and doctor use for people with liver concerns.",
+    a: "It is not only about lighter tone. Glutathione also works as an antioxidant and anti-aging nutrient, with collagen and vitamin C in one clear complex.",
   },
   {
     q: "Can I still use creams and lotions?",
@@ -29,7 +30,7 @@ const faqs = [
   },
   {
     q: "Are results permanent?",
-    a: "A brighter tone is maintained with habit, sun protection, and a maintenance capsule after you reach your goal. If you stop and leave skin unprotected, tone can slowly move back.",
+    a: "A brighter tone is maintained with habit, sun protection, and a maintenance capsule after you reach your goal.",
   },
   {
     q: "Does sunlight affect results?",
@@ -43,55 +44,52 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="scroll-mt-24 bg-[#eaf3f8] px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
+      className="scroll-mt-20 bg-[#f8fafc] px-4 pt-6 pb-12 sm:px-6 sm:pt-8 sm:pb-14 lg:px-8"
     >
-      <div className="mx-auto flex max-w-4xl flex-col gap-6">
-        <div className="section-head">
-          <p className="section-kicker">FAQ</p>
-          <h2 className="section-title">Common questions, clear answers</h2>
-          <p className="section-lead">
-            Taken from the official insert and rewritten for easy reading.
-          </p>
+      <div className="mx-auto max-w-3xl">
+        <div className="text-center">
+          <p className="section-label">FAQ</p>
+          <h2 className="section-title">Common questions</h2>
         </div>
 
-        <div className="space-y-2.5">
+        <div className="mt-8 space-y-2.5 sm:mt-10 sm:space-y-3">
           {faqs.map((item, index) => {
             const isOpen = open === index;
             return (
               <div
                 key={item.q}
-                className={`overflow-hidden rounded-2xl border bg-white shadow-[0_6px_20px_rgba(10,39,86,0.04)] transition ${
+                className={`overflow-hidden rounded-xl border bg-white transition sm:rounded-2xl ${
                   isOpen
-                    ? "border-[#c9a227]/40 shadow-[0_12px_28px_rgba(10,39,86,0.08)]"
-                    : "border-[#c9d8e6]/80"
+                    ? "border-[#c4b5fd] shadow-[0_12px_28px_rgba(79,70,229,0.08)]"
+                    : "border-[#e2e8f0]"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  className="flex w-full items-center justify-between gap-3 px-3.5 py-3.5 text-left sm:gap-4 sm:px-5 sm:py-4"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[1.05rem] font-bold text-[#0a2756]">
+                  <span className="text-[0.95rem] font-bold text-[#1e1b4b] sm:text-[1.02rem]">
                     {item.q}
                   </span>
                   <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-lg font-bold transition-transform ${
+                    className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-transform sm:h-8 sm:w-8 ${
                       isOpen
-                        ? "rotate-45 bg-[#0a2756] text-[#e4c15a]"
-                        : "bg-[#eaf3f8] text-[#0a2756]"
+                        ? "rotate-45 bg-[#7c3aed] text-white"
+                        : "bg-[#eef2ff] text-[#7c3aed]"
                     }`}
                   >
-                    +
+                    <PlusIcon size={15} />
                   </span>
                 </button>
                 <div
-                  className={`grid transition-[grid-template-rows] duration-400 ${
+                  className={`grid transition-[grid-template-rows] duration-300 ${
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="border-t border-[#c9d8e6] px-5 py-4 text-[1.02rem] leading-7 text-[#4a5d75]">
+                    <p className="border-t border-[#e2e8f0] px-3.5 py-3.5 text-[0.92rem] leading-7 text-[#64748b] sm:px-5 sm:py-4 sm:text-[0.98rem]">
                       {item.a}
                     </p>
                   </div>

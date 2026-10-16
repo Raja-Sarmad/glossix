@@ -1,55 +1,69 @@
+import { FacebookIcon, InstagramIcon, LeafIcon } from "./icons";
+
+const links = [
+  { href: "#top", label: "Home" },
+  { href: "#benefits", label: "Benefits" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden px-4 pt-16 pb-10 text-white sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,#061a38_0%,#0a2756_55%,#0d3168_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_90%_10%,rgba(42,155,199,0.2),transparent_55%)]" />
-
-      <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-3">
-          <div>
-            <p className="brand-mark text-[2rem] text-white">
+    <footer className="border-t border-[#e2e8f0] bg-white px-4 pt-8 pb-6 sm:px-6 sm:pt-10 sm:pb-8 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:gap-6 md:text-left">
+        <a href="#top" className="inline-flex items-center gap-2.5">
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#4f46e5] to-[#7c3aed] text-white">
+            <LeafIcon size={18} />
+          </span>
+          <span className="text-left">
+            <span className="block text-lg font-extrabold text-[#1e1b4b]">
               Glossix
-            </p>
-            <p className="mt-3 max-w-sm text-[1rem] leading-7 text-white/85">
-              Expert nutrition for natural skin whitening from Inovics
-              Healthcare.
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-extrabold tracking-wide text-[#e4c15a] uppercase">
-              Manufactured by
-            </p>
-            <p className="mt-2 text-lg font-bold text-white">Inovics Healthcare</p>
-            <p className="mt-2 text-[0.98rem] leading-7 text-white/80">
-              P-819, 14-km Adyala Road
-              <br />
-              Rawalpindi, Pakistan
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-extrabold tracking-wide text-[#e4c15a] uppercase">
-              Website
-            </p>
+            </span>
+            <span className="text-[11px] font-medium text-[#64748b]">
+              Brighter Skin. From Within.
+            </span>
+          </span>
+        </a>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-5">
+          {links.map((link) => (
             <a
-              href="https://www.inovicshealthcare.com"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-block font-semibold text-[#7ecceb] underline-offset-2 hover:underline"
+              key={link.href}
+              href={link.href}
+              className="text-sm font-semibold text-[#475569] hover:text-[#7c3aed]"
             >
-              inovicshealthcare.com
+              {link.label}
             </a>
-          </div>
-        </div>
+          ))}
+        </nav>
 
-        <div className="mt-10 rounded-2xl border border-white/15 bg-white/8 px-5 py-4 text-[0.98rem] leading-7 text-white/88 backdrop-blur-sm">
-          This product is a dietary supplement. It is not intended to diagnose,
-          cure, treat, or prevent any disease.
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://www.inovicshealthcare.com"
+            target="_blank"
+            rel="noreferrer"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[#eef2ff] text-[#7c3aed]"
+            aria-label="Instagram"
+          >
+            <InstagramIcon size={16} />
+          </a>
+          <a
+            href="https://www.inovicshealthcare.com"
+            target="_blank"
+            rel="noreferrer"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[#eef2ff] text-[#7c3aed]"
+            aria-label="Facebook"
+          >
+            <FacebookIcon size={16} />
+          </a>
+          <p className="text-xs text-[#94a3b8]">© 2026 Glossix</p>
         </div>
-
-        <p className="mt-8 text-sm text-white/60">
-          © Inovics Healthcare · Glossix
-        </p>
       </div>
+      <p className="mx-auto mt-5 max-w-7xl px-1 text-center text-[10px] leading-5 text-[#94a3b8] sm:mt-6 sm:text-[11px] sm:leading-normal">
+        Dietary supplement. Not intended to diagnose, cure, treat, or prevent any
+        disease. Replace placeholder photos in /public/images anytime.
+      </p>
     </footer>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Caveat, Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -14,19 +14,31 @@ const display = Fraunces({
   weight: ["500", "600", "700"],
 });
 
+const hand = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Glossix — Expert Nutrition for Natural Skin Whitening",
+  title: "Glossix — Brighter Skin From Within",
   description:
-    "Glossix is a glutathione, collagen and vitamin C dietary supplement from Inovics Healthcare. Crafted to support a brighter complexion, calmer skin and everyday antioxidant care.",
+    "Glossix is a glutathione, collagen and vitamin C dietary supplement from Inovics Healthcare for clearer, calmer, brighter-looking skin.",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} h-full antialiased`}
+      className={`${sans.variable} ${display.variable} ${hand.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-[#13233f]">{children}</body>
+      <body className="min-h-full bg-[#f8fafc] text-[#1e1b4b]">{children}</body>
     </html>
   );
 }

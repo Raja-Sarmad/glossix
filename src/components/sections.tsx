@@ -1,262 +1,225 @@
-import type { ReactNode } from "react";
-import { Reveal } from "./reveal";
+import Image from "next/image";
+import {
+  ArrowRightIcon,
+  AtomIcon,
+  CartIcon,
+  DropletIcon,
+  FlaskIcon,
+  LeafIcon,
+  LockIcon,
+  LayersIcon,
+  ShieldCheckIcon,
+  SparkleIcon,
+  StarFillIcon,
+  TruckIcon,
+} from "./icons";
 
-const benefits = [
+const loveItems = [
   {
-    title: "Brighter, even tone",
-    copy: "Helps lighten and even skin tone by supporting the body’s melanin pathway from within.",
-    icon: "✦",
+    title: "Brighter tone",
+    copy: "Supports a lighter, more even look by guiding pigment from within.",
+    Icon: SparkleIcon,
   },
   {
-    title: "Clearer-looking skin",
-    copy: "Supports calmer skin and may help with acne, pimples, and the marks they leave behind.",
-    icon: "◎",
+    title: "Dark spot support",
+    copy: "Helps the look of uneven tone and marks for a clearer complexion.",
+    Icon: DropletIcon,
   },
   {
-    title: "Firmer feel",
-    copy: "Supports collagen building blocks so skin can feel smoother and more elastic.",
-    icon: "◆",
+    title: "Deep nourishment",
+    copy: "Collagen and vitamin C support for smoother, healthier-feeling skin.",
+    Icon: LayersIcon,
   },
   {
-    title: "Under-eye care",
-    copy: "Helps reduce the tired look of dark circles as antioxidant support reaches the surface.",
-    icon: "◉",
+    title: "Gentle & safe",
+    copy: "Oral dietary supplement with a clear labelled daily ritual.",
+    Icon: ShieldCheckIcon,
   },
   {
-    title: "Daily protection",
-    copy: "Helps fight free radicals from sun, pollution, and stress — a master antioxidant.",
-    icon: "⬡",
-  },
-  {
-    title: "Whole-body support",
-    copy: "Also listed for immune, anti-fatigue, cardio, and skin-comfort support.",
-    icon: "✚",
+    title: "All skin types",
+    copy: "Made for consistent use across different starting skin tones.",
+    Icon: LeafIcon,
   },
 ];
 
-const formula = [
+const actives = [
   {
-    name: "Glutathione",
-    amount: "500mg",
-    role: "Master antioxidant. Helps guide pigment toward a lighter, more even look.",
-    note: "Main active",
+    name: "Glutathione 500mg",
+    copy: "Master antioxidant that helps guide pigment toward a lighter look.",
+    Icon: FlaskIcon,
+    tone: "bg-[#ede9fe] text-[#7c3aed]",
   },
   {
-    name: "Alpha lipoic acid",
-    amount: "40mg",
-    role: "Supports glutathione’s antioxidant work inside the cells.",
-    note: "Support active",
+    name: "Alpha lipoic acid 40mg",
+    copy: "Supports glutathione’s antioxidant work inside the cells.",
+    Icon: AtomIcon,
+    tone: "bg-[#dbeafe] text-[#2563eb]",
   },
   {
-    name: "Sodium ascorbate",
-    amount: "40mg",
-    role: "Vitamin C form that helps absorption and protects cells from damage.",
-    note: "Absorption help",
-  },
-  {
-    name: "Collagen",
-    amount: "40mg",
-    role: "Supports firmness and bounce alongside glutathione’s skin benefits.",
-    note: "Skin support",
+    name: "Vitamin C + Collagen",
+    copy: "Absorption help and firmness support in one capsule story.",
+    Icon: LeafIcon,
+    tone: "bg-[#e0e7ff] text-[#4f46e5]",
   },
 ];
 
-const steps = [
+const reviews = [
   {
-    n: "01",
-    title: "Starts under the surface",
-    copy: "L-glutathione begins in the dermis, then moves outward to the visible skin layer.",
+    name: "Ayesha Khan",
+    city: "Karachi",
+    quote:
+      "I wanted something simple to explain to clients — Glossix’s glutathione story is clear and premium.",
+    photo: "/images/review-1.jpg",
   },
   {
-    n: "02",
-    title: "Slows dark pigment",
-    copy: "Reduced glutathione helps quiet tyrosinase — the enzyme that builds dark melanin.",
+    name: "Sara Malik",
+    city: "Lahore",
+    quote:
+      "The 500mg focus plus collagen and vitamin C makes it easy to recommend as a full complex.",
+    photo: "/images/review-2.jpg",
   },
   {
-    n: "03",
-    title: "Shifts toward lighter tone",
-    copy: "Pigment moves from dark eumelanin toward lighter pheomelanin — gradually and evenly.",
+    name: "Hira Raza",
+    city: "Islamabad",
+    quote:
+      "Packaging looks clinic-ready and the dosage guidance is straightforward for consultations.",
+    photo: "/images/review-3.jpg",
   },
 ];
-
-const journey = [
-  { tone: "Medium brown skin", time: "1–3 months", detail: "Often the first visible shift" },
-  { tone: "Dark brown skin", time: "3–6 months", detail: "Steady, even progress" },
-  { tone: "Very dark skin", time: "6–12 months", detail: "Longer consistency needed" },
-];
-
-function SectionHead({
-  kicker,
-  title,
-  lead,
-  dark = false,
-}: {
-  kicker: string;
-  title: ReactNode;
-  lead?: string;
-  dark?: boolean;
-}) {
-  return (
-    <div className="section-head">
-      <p className={`section-kicker ${dark ? "on-dark" : ""}`}>{kicker}</p>
-      <h2 className={`section-title ${dark ? "on-dark" : ""}`}>{title}</h2>
-      {lead ? (
-        <p className={`section-lead ${dark ? "on-dark" : ""}`}>{lead}</p>
-      ) : null}
-    </div>
-  );
-}
 
 export function Benefits() {
   return (
     <section
       id="benefits"
-      className="scroll-mt-24 bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
+      className="scroll-mt-20 bg-white px-4 pt-6 pb-12 sm:px-6 sm:pt-8 sm:pb-14 lg:px-8"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="Benefits"
-          title="What Glossix is made to support"
-          lead="Clear benefits from the product insert — written in simple language."
-        />
+      <div className="mx-auto max-w-7xl text-center">
+        <p className="section-label">Why you’ll love it</p>
+        <h2 className="section-title px-1">Real Benefits. Visible Results.</h2>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {benefits.map((item) => (
-            <Reveal
+        <div className="mt-8 grid grid-cols-1 gap-7 sm:mt-10 sm:grid-cols-2 sm:gap-8 lg:mt-12 lg:grid-cols-3 xl:grid-cols-5 xl:gap-5">
+          {loveItems.map((item) => (
+            <div
               key={item.title}
-              className="rounded-2xl border border-[#c9d8e6]/80 bg-gradient-to-b from-[#f7fbfd] to-white p-5 shadow-[0_8px_28px_rgba(10,39,86,0.04)] transition hover:-translate-y-0.5 hover:border-[#2a9bc7]/30 hover:shadow-[0_16px_36px_rgba(10,39,86,0.08)] sm:p-6"
+              className="mx-auto flex w-full max-w-xs flex-col items-center px-1 sm:max-w-none"
             >
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#0a2756] to-[#143a72] text-base text-[#e4c15a] shadow-[0_6px_16px_rgba(10,39,86,0.2)]">
-                  {item.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-extrabold tracking-tight text-[#0a2756]">
-                    {item.title}
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-[#eef2ff] text-[#7c3aed] ring-1 ring-[#e0e7ff] sm:h-[4.5rem] sm:w-[4.5rem]">
+                <item.Icon size={26} />
+              </span>
+              <h3 className="mt-3 text-[15px] font-extrabold text-[#1e1b4b] sm:mt-4">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-[#64748b]">{item.copy}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function HowItWorks() {
+  return (
+    <section
+      id="how-it-works"
+      className="scroll-mt-20 bg-[#f8fafc] px-3 py-0 sm:px-5 lg:px-6 xl:px-8"
+    >
+      <div className="mx-auto grid w-full max-w-[92rem] items-center gap-6 md:gap-7 lg:grid-cols-[1.1fr_0.95fr_1.1fr] lg:gap-5 xl:gap-6">
+        {/* product */}
+        <div className="relative order-2 w-full lg:order-1">
+          <p className="font-hand absolute top-[16%] left-2 z-20 text-[1.7rem] leading-[1.05] font-semibold text-[#7c3aed] sm:left-3 sm:text-[2.15rem] lg:top-[18%]">
+            Your Glow
+            <br />
+            Starts Here
+            <span className="mt-0.5 block rotate-[-12deg] pl-10 text-xl text-[#a78bfa] sm:pl-14 sm:text-2xl">
+              ↷
+            </span>
+          </p>
+          <div className="relative flex aspect-[5/6] w-full items-center justify-center p-2 sm:p-3">
+            <Image
+              src="/product-Photoroom.png"
+              alt="Glossix Papaya Whitening Skin Serum"
+              width={800}
+              height={1000}
+              className="relative z-10 h-auto w-full object-contain"
+              sizes="(max-width: 1024px) 100vw, 34vw"
+              unoptimized
+            />
+          </div>
+        </div>
+
+        {/* actives */}
+        <div className="order-1 w-full px-1 text-center sm:text-left lg:order-2 lg:px-0">
+          <p className="section-label">Powered by nature + science</p>
+          <h2 className="section-title">How It Works</h2>
+          <div className="mt-6 space-y-5 sm:mt-7 sm:space-y-6">
+            {actives.map((item) => (
+              <div
+                key={item.name}
+                className="flex items-start gap-3.5 text-left"
+              >
+                <span
+                  className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${item.tone}`}
+                >
+                  <item.Icon size={20} />
+                </span>
+                <div className="min-w-0 pt-0.5">
+                  <h3 className="text-base font-extrabold text-[#1e1b4b]">
+                    {item.name}
                   </h3>
-                  <p className="mt-1.5 text-[0.98rem] leading-6 text-[#4a5d75]">
+                  <p className="mt-1 text-sm leading-6 text-[#64748b]">
                     {item.copy}
                   </p>
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="grid gap-3 rounded-2xl bg-gradient-to-br from-[#0a2756] via-[#0d3168] to-[#143a72] p-4 text-white shadow-[0_20px_50px_rgba(10,39,86,0.25)] sm:grid-cols-3 sm:p-5">
-          {[
-            ["500mg", "Glutathione per capsule"],
-            ["4 actives", "Complete complex"],
-            ["2x daily", "Simple ritual"],
-          ].map(([value, label]) => (
-            <div
-              key={label}
-              className="rounded-xl border border-white/10 bg-white/10 px-4 py-3.5 text-center backdrop-blur-sm"
-            >
-              <p className="text-2xl font-extrabold text-[#e4c15a]">{value}</p>
-              <p className="mt-0.5 text-sm font-semibold text-white/90">{label}</p>
-            </div>
-          ))}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-export function Science() {
-  const points = [
-    {
-      title: "Made in every cell",
-      copy: "Glutathione (GSH) is built from three amino acids. The liver holds the highest amount.",
-    },
-    {
-      title: "Helps nutrient use",
-      copy: "It supports how the body uses nutrients and helps build the blocks of collagen.",
-    },
-    {
-      title: "More than whitening",
-      copy: "It also works as an antioxidant and anti-aging nutrient for everyday skin health.",
-    },
-  ];
-
-  const knownFor = [
-    "Immune support",
-    "Anti-fatigue help",
-    "Powerful antioxidant",
-    "Skin comfort",
-    "Anti-inflammatory",
-    "Free-radical defense",
-    "Collagen support",
-    "Stress-load balance",
-  ];
-
-  return (
-    <section
-      id="science"
-      className="scroll-mt-24 bg-[#eaf3f8] px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
-    >
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="Science"
-          title="Why glutathione matters"
-          lead="Glutathione is a natural protein in every cell. When levels drop, skin and recovery both feel it."
-        />
-
-        <div className="grid gap-3 sm:grid-cols-3">
-          {points.map((point) => (
-            <Reveal
-              key={point.title}
-              className="rounded-2xl border border-white bg-white p-5 shadow-[0_8px_28px_rgba(10,39,86,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(10,39,86,0.1)]"
-            >
-              <div className="mb-3 h-1.5 w-10 rounded-full bg-gradient-to-r from-[#2a9bc7] to-[#e4c15a]" />
-              <h3 className="text-lg font-extrabold text-[#0a2756]">
-                {point.title}
-              </h3>
-              <p className="mt-1.5 text-[0.98rem] leading-6 text-[#4a5d75]">
-                {point.copy}
-              </p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="rounded-2xl bg-gradient-to-br from-[#0a2756] to-[#143a72] p-5 text-white shadow-[0_20px_50px_rgba(10,39,86,0.22)] sm:p-6">
-          <div className="grid gap-4 sm:grid-cols-[1.2fr_0.8fr] sm:items-center">
-            <div>
-              <p className="text-xs font-bold tracking-[0.14em] text-[#7ecceb] uppercase">
-                What people often notice
-              </p>
-              <p className="mt-1.5 text-lg font-extrabold tracking-tight sm:text-xl">
-                Taken by mouth, it may help with acne inflammation, excess oil,
-                and stress load.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#e4c15a]/25 bg-white/10 px-5 py-4 text-center">
-              <p className="text-4xl font-extrabold text-[#e4c15a]">~30</p>
-              <p className="mt-0.5 text-sm font-semibold text-white/90">
-                days for many people to notice a difference
-              </p>
-            </div>
+            ))}
           </div>
-        </Reveal>
+        </div>
 
-        <div>
-          <h3 className="text-center text-base font-extrabold text-[#0a2756]">
-            Also known for
+        {/* before after */}
+        <div className="order-3 w-full rounded-[1.35rem] border border-[#e2e8f0] bg-white p-4 shadow-[0_16px_40px_rgba(30,27,75,0.07)] sm:rounded-[1.75rem] sm:p-5 lg:p-6">
+          <h3 className="text-base font-extrabold text-[#1e1b4b] sm:text-lg">
+            Real People. Real Change.
           </h3>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {knownFor.map((item) => (
-              <Reveal
-                key={item}
-                className="flex items-center gap-3 rounded-xl border border-white bg-white/80 px-3.5 py-3 shadow-sm transition hover:border-[#2a9bc7]/35 hover:shadow-md"
-              >
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#0a2756] text-xs font-extrabold text-[#e4c15a]">
-                  ✓
+          <p className="mt-1 text-sm text-[#64748b]">
+            Notice the difference with consistent use.
+          </p>
+
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-5">
+            <div className="overflow-hidden rounded-2xl">
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/before.jpg"
+                  alt="Before — replace with your photo"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-[#c7d2fe] px-3 py-1 text-[10px] font-extrabold tracking-wide text-[#1e1b4b] uppercase">
+                  Before
                 </span>
-                <span className="text-[0.95rem] font-bold text-[#13233f]">
-                  {item}
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl">
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/after.jpg"
+                  alt="After — replace with your photo"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-[#ede9fe] px-3 py-1 text-[10px] font-extrabold tracking-wide text-[#5b21b6] uppercase">
+                  After
                 </span>
-              </Reveal>
-            ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 flex justify-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#c4b5fd]" />
+            <span className="h-2 w-2 rounded-full bg-[#7c3aed]" />
+            <span className="h-2 w-2 rounded-full bg-[#c4b5fd]" />
           </div>
         </div>
       </div>
@@ -264,90 +227,48 @@ export function Science() {
   );
 }
 
-export function Formula() {
+export function Reviews() {
   return (
     <section
-      id="formula"
-      className="scroll-mt-24 bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
+      id="reviews"
+      className="scroll-mt-20 bg-white px-4 pt-6 pb-12 sm:px-6 sm:pt-8 sm:pb-14 lg:px-8"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="Formula"
-          title="What’s inside each capsule"
-          lead="Four actives. Clear amounts. Easy to explain to any client."
-        />
+      <div className="mx-auto max-w-7xl">
+        <div className="text-center">
+          <p className="section-label">Loved by thousands</p>
+          <h2 className="section-title px-1">What Our Customers Say</h2>
+        </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          {formula.map((item) => (
-            <Reveal
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+          {reviews.map((item) => (
+            <article
               key={item.name}
-              className="group rounded-2xl border border-[#c9d8e6]/80 bg-gradient-to-br from-white to-[#f0f7fb] p-5 shadow-[0_8px_28px_rgba(10,39,86,0.04)] transition hover:-translate-y-0.5 hover:border-[#c9a227]/40 hover:shadow-[0_16px_36px_rgba(10,39,86,0.1)] sm:p-6"
+              className="rounded-[1.25rem] border border-[#e2e8f0] bg-white p-4 shadow-[0_10px_30px_rgba(30,27,75,0.05)] sm:rounded-[1.5rem] sm:p-5"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[11px] font-bold tracking-[0.14em] text-[#2a9bc7] uppercase">
-                    {item.note}
-                  </p>
-                  <h3 className="mt-1 text-xl font-extrabold tracking-tight text-[#0a2756]">
-                    {item.name}
-                  </h3>
+              <div className="flex items-center gap-3">
+                <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-[#ede9fe] sm:h-12 sm:w-12">
+                  <Image
+                    src={item.photo}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
-                <span className="shrink-0 rounded-xl bg-gradient-to-b from-[#e4c15a] to-[#c9a227] px-3.5 py-2 text-sm font-extrabold text-[#061a38] shadow-[0_6px_14px_rgba(201,162,39,0.3)]">
-                  {item.amount}
-                </span>
+                <div className="flex gap-0.5 text-[#f59e0b]">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <StarFillIcon key={i} size={14} />
+                  ))}
+                </div>
               </div>
-              <div className="mt-3 h-px w-full bg-gradient-to-r from-[#c9d8e6] via-[#2a9bc7]/40 to-transparent" />
-              <p className="mt-3 text-[0.98rem] leading-6 text-[#4a5d75]">
-                {item.role}
+              <p className="mt-3 text-[0.95rem] leading-7 text-[#334155] sm:mt-4 sm:text-[0.98rem]">
+                “{item.quote}”
               </p>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-[#c9d8e6] bg-[#eaf3f8] px-5 py-3.5 text-sm font-semibold text-[#4a5d75]">
-          <span className="rounded-lg bg-[#0a2756] px-3 py-1.5 font-extrabold text-[#e4c15a]">
-            Total focus
-          </span>
-          <span>500mg glutathione</span>
-          <span className="hidden text-[#c9d8e6] sm:inline">•</span>
-          <span>3 support actives at 40mg each</span>
-          <span className="hidden text-[#c9d8e6] sm:inline">•</span>
-          <span>One clear capsule story</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Process() {
-  return (
-    <section className="relative overflow-hidden px-4 py-12 text-white sm:px-6 sm:py-14 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,#061a38_0%,#0a2756_45%,#0f3a6e_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_20%,rgba(42,155,199,0.25),transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_10%_90%,rgba(228,193,90,0.12),transparent_55%)]" />
-
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="How it works"
-          title="From the inside, step by step"
-          lead="Not overnight magic — a clear process that builds over time."
-          dark
-        />
-
-        <div className="grid gap-3 lg:grid-cols-3">
-          {steps.map((step) => (
-            <Reveal
-              key={step.n}
-              className="rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm transition hover:bg-white/12"
-            >
-              <div className="flex items-baseline gap-3">
-                <p className="text-3xl font-extrabold text-[#e4c15a]">{step.n}</p>
-                <h3 className="text-lg font-extrabold text-white">{step.title}</h3>
-              </div>
-              <p className="mt-2.5 text-[0.98rem] leading-6 text-white/90">
-                {step.copy}
+              <p className="mt-3 text-sm font-extrabold text-[#1e1b4b] sm:mt-4">
+                {item.name}
+                <span className="font-medium text-[#64748b]">, {item.city}</span>
               </p>
-            </Reveal>
+            </article>
           ))}
         </div>
       </div>
@@ -355,147 +276,76 @@ export function Process() {
   );
 }
 
-export function Ritual() {
+export function Offer() {
   return (
-    <section
-      id="ritual"
-      className="scroll-mt-24 bg-[#f0f7fb] px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
-    >
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="How to use"
-          title="Timeline and dosage"
-          lead="Results depend on starting skin tone. Stay consistent, protect from sun, and follow the labelled dose."
-        />
-
-        <div className="grid gap-3 lg:grid-cols-2">
-          <Reveal className="rounded-2xl border border-[#c9d8e6]/80 bg-white p-5 shadow-[0_8px_28px_rgba(10,39,86,0.05)] sm:p-6">
-            <h3 className="text-lg font-extrabold text-[#0a2756]">
-              Expected timeline
-            </h3>
-            <ol className="mt-4 space-y-2.5">
-              {journey.map((item, index) => (
-                <li
-                  key={item.tone}
-                  className="rounded-xl border border-[#eaf3f8] bg-[#f7fbfd] px-3.5 py-3.5"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="flex items-center gap-3">
-                      <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#0a2756] text-sm font-extrabold text-[#e4c15a]">
-                        {index + 1}
-                      </span>
-                      <span>
-                        <span className="block font-bold text-[#13233f]">
-                          {item.tone}
-                        </span>
-                        <span className="text-sm text-[#4a5d75]">
-                          {item.detail}
-                        </span>
-                      </span>
-                    </span>
-                    <span className="shrink-0 rounded-md bg-white px-3 py-1.5 text-sm font-extrabold text-[#0a2756] shadow-sm ring-1 ring-[#c9d8e6]/80">
-                      {item.time}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-3.5 rounded-xl border border-[#2a9bc7]/20 bg-[#e8f4fb] px-4 py-3 text-[0.95rem] leading-6 text-[#13233f]">
-              After you reach your goal tone, a maintenance capsule (with sun
-              care) helps keep results.
+    <section id="order" className="scroll-mt-20 px-4 pt-4 pb-8 sm:px-6 lg:px-8">
+      <div className="gradient-cta relative mx-auto max-w-7xl overflow-hidden rounded-[1.5rem] px-4 py-8 sm:rounded-[2rem] sm:px-8 sm:py-12 lg:px-10">
+        <div className="grid items-center gap-6 sm:gap-8 lg:grid-cols-[0.85fr_1.25fr_0.7fr] lg:gap-6">
+          <div className="mx-auto w-full max-w-[180px] text-center sm:max-w-[210px]">
+            <Image
+              src="/glossix.png"
+              alt="Glossix"
+              width={1251}
+              height={1091}
+              className="mx-auto h-auto w-full drop-shadow-xl"
+              unoptimized
+            />
+            <p className="font-hand mt-2 text-xl font-semibold text-[#4f46e5] sm:text-2xl">
+              Bright · Healthy · Confident
             </p>
-          </Reveal>
-
-          <Reveal className="rounded-2xl bg-gradient-to-br from-[#0a2756] to-[#143a72] p-5 text-white shadow-[0_20px_50px_rgba(10,39,86,0.22)] sm:p-6">
-            <h3 className="text-lg font-extrabold">Recommended dosage</h3>
-            <p className="mt-1.5 text-white/90">
-              Take in two divided doses each day.
-            </p>
-
-            <div className="mt-4 space-y-3">
-              <div className="rounded-xl border border-white/10 bg-white/10 p-4">
-                <p className="text-sm font-extrabold tracking-wide text-[#e4c15a] uppercase">
-                  Antioxidant / anti-aging
-                </p>
-                <p className="mt-1.5 text-[1.05rem] font-bold leading-6 text-white">
-                  10–20 mg glutathione per kg body weight / day
-                </p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-white/10 p-4">
-                <p className="text-sm font-extrabold tracking-wide text-[#e4c15a] uppercase">
-                  Skin whitening support
-                </p>
-                <p className="mt-1.5 text-[1.05rem] font-bold leading-6 text-white">
-                  20–40 mg glutathione per kg body weight / day
-                </p>
-              </div>
-              <div className="rounded-xl border border-white/20 px-4 py-3 text-[0.95rem] leading-6 text-white/90">
-                Example: Always follow the bottle label and your clinician’s
-                advice for your body weight.
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Facts() {
-  return (
-    <section className="scroll-mt-24 bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <SectionHead
-          kicker="Supplement facts"
-          title="Average amount per capsule"
-          lead="Quick reference for packaging, clinics, and client questions."
-        />
-
-        <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr]">
-          <div className="overflow-hidden rounded-2xl border border-[#c9d8e6] shadow-[0_8px_28px_rgba(10,39,86,0.04)]">
-            {[
-              ["Glutathione", "500mg"],
-              ["Alpha lipoic acid", "40mg"],
-              ["Sodium ascorbate", "40mg"],
-              ["Collagen", "40mg"],
-            ].map(([name, amount], i) => (
-              <div
-                key={name}
-                className={`flex items-center justify-between px-5 py-4 ${
-                  i % 2 === 0 ? "bg-[#f0f7fb]" : "bg-white"
-                }`}
-              >
-                <span className="text-[1.05rem] font-bold text-[#13233f]">
-                  {name}
-                </span>
-                <span className="text-xl font-extrabold text-[#0a2756]">
-                  {amount}
-                </span>
-              </div>
-            ))}
           </div>
 
-          <div className="grid gap-3">
-            <div className="rounded-xl border border-[#c9d8e6] bg-[#f7fbfd] px-4 py-4">
-              <p className="text-xs font-bold tracking-wide text-[#2a9bc7] uppercase">
-                Manufacturer
-              </p>
-              <p className="mt-1 font-bold text-[#13233f]">Inovics Healthcare</p>
-              <p className="mt-1 text-sm leading-6 text-[#4a5d75]">
-                Rawalpindi, Pakistan
-              </p>
+          <div className="text-center lg:text-left">
+            <p className="text-[11px] font-extrabold tracking-[0.16em] text-[#7c3aed] uppercase sm:text-xs">
+              Limited time offer
+            </p>
+            <h2 className="mt-2 text-[clamp(1.6rem,5vw,2.55rem)] font-extrabold tracking-tight text-[#1e1b4b]">
+              Get Your Glow Today
+            </h2>
+
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 lg:justify-start">
+              <span className="text-base font-semibold text-[#94a3b8] line-through sm:text-lg">
+                Rs. 4,500
+              </span>
+              <span className="text-2xl font-extrabold text-[#1e1b4b] sm:text-3xl">
+                Rs. 2,999
+              </span>
+              <span className="rounded-full bg-[#7c3aed] px-3 py-1 text-xs font-extrabold text-white">
+                33% OFF
+              </span>
             </div>
-            <div className="rounded-xl border border-[#c9d8e6] bg-[#f7fbfd] px-4 py-4">
-              <p className="text-xs font-bold tracking-wide text-[#2a9bc7] uppercase">
-                Licence
-              </p>
-              <p className="mt-1 font-bold text-[#13233f]">PE 007337/0016</p>
-              <p className="mt-1 text-sm leading-6 text-[#4a5d75]">
-                M.L. No. 007337
-              </p>
+
+            <a
+              href="https://www.inovicshealthcare.com"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-white shadow-[0_12px_28px_rgba(79,70,229,0.35)] transition hover:-translate-y-0.5 hover:brightness-105 sm:mt-6 sm:w-auto"
+            >
+              <CartIcon size={16} className="shrink-0" />
+              <span>Add to Cart</span>
+              <ArrowRightIcon size={16} className="shrink-0" />
+            </a>
+
+            <div className="mt-5 flex flex-col items-center gap-3 text-sm font-semibold text-[#475569] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-5 lg:justify-start">
+              <span className="inline-flex items-center gap-2 text-center sm:text-left">
+                <TruckIcon size={16} className="shrink-0 text-[#2563eb]" />
+                <span>Free Delivery (orders over Rs. 3,000)</span>
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <LockIcon size={16} className="shrink-0 text-[#7c3aed]" />
+                Secure Payment
+              </span>
             </div>
-            <div className="rounded-xl border border-[#c9a227]/30 bg-gradient-to-r from-[#faf6ee] to-[#eaf3f8] px-4 py-3 text-center text-sm font-semibold text-[#4a5d75]">
-              30 capsules · Twice a day · Dietary supplement
+          </div>
+
+          <div className="mx-auto grid h-36 w-36 place-items-center rounded-full bg-gradient-to-br from-[#a5b4fc] to-[#c4b5fd] text-center shadow-lg sm:h-52 sm:w-52 lg:h-44 lg:w-44 xl:h-52 xl:w-52">
+            <div className="px-4 sm:px-5">
+              <LeafIcon size={28} className="mx-auto text-white" />
+              <p className="mt-2 text-xs font-extrabold text-white sm:text-sm">
+                Clearer Skin
+                <br />
+                Brighter Days
+              </p>
             </div>
           </div>
         </div>
