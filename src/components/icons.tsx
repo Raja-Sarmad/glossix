@@ -193,6 +193,33 @@ export function PlusIcon(props: IconProps) {
   );
 }
 
+export function MinusIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M5 12h14" />
+    </Base>
+  );
+}
+
+export function XIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M18 6 6 18M6 6l12 12" />
+    </Base>
+  );
+}
+
+export function TrashIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M3 6h18" />
+      <path d="M8 6V4h8v2" />
+      <path d="M19 6l-1 14H6L5 6" />
+      <path d="M10 11v6M14 11v6" />
+    </Base>
+  );
+}
+
 export function ExternalLinkIcon(props: IconProps) {
   return (
     <Base {...props}>

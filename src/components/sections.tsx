@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AddToCartButton } from "./add-to-cart-button";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -127,7 +128,7 @@ export function HowItWorks() {
       <div className="mx-auto grid w-full max-w-[92rem] items-center gap-5 sm:gap-6 lg:grid-cols-[1.1fr_0.95fr_1.1fr] lg:gap-5 xl:gap-6">
         {/* product — top on mobile, left on desktop */}
         <div className="relative order-1 mx-auto w-full max-w-[22rem] lg:max-w-none">
-          <p className="font-hand absolute top-1 left-0 z-20 text-[1.45rem] leading-[1.05] font-semibold text-[#7c3aed] sm:top-[12%] sm:left-1 sm:text-[1.9rem] lg:top-[16%] lg:left-2 lg:text-[2.15rem]">
+          <p className="font-hand absolute top-[26%] left-0 z-20 text-[1.45rem] leading-[1.05] font-semibold text-[#7c3aed] sm:top-[28%] sm:left-1 sm:text-[1.9rem] lg:top-[30%] lg:left-2 lg:text-[2.15rem]">
             Your Glow
             <br />
             Starts Here
@@ -135,16 +136,24 @@ export function HowItWorks() {
               ↷
             </span>
           </p>
-          <div className="relative flex w-full items-center justify-center pt-12 sm:aspect-[5/6] sm:pt-0">
+          <div className="relative flex w-full flex-col items-center justify-center">
             <Image
               src="/product-Photoroom.png"
               alt="Glossix Papaya Whitening Skin Serum"
               width={800}
               height={1000}
-              className="relative z-10 mx-auto h-auto w-[88%] max-w-[300px] object-contain sm:max-w-none sm:w-full"
+              className="relative z-10 mx-auto h-auto w-[88%] max-w-[300px] object-contain sm:max-w-[340px] sm:w-[90%] lg:max-w-none lg:w-full"
               sizes="(max-width: 1024px) 88vw, 34vw"
               unoptimized
             />
+            <div className="-mt-1 flex w-full justify-center sm:-mt-2">
+              <AddToCartButton
+                className="inline-flex w-full max-w-[220px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-6 py-2.5 text-sm font-extrabold text-white shadow-[0_12px_28px_rgba(79,70,229,0.3)] transition hover:-translate-y-0.5 hover:brightness-105"
+              >
+                <CartIcon size={16} className="shrink-0" />
+                <span>Add to Cart</span>
+              </AddToCartButton>
+            </div>
           </div>
         </div>
 
@@ -321,16 +330,13 @@ export function Offer() {
               </span>
             </div>
 
-            <a
-              href="https://www.inovicshealthcare.com"
-              target="_blank"
-              rel="noreferrer"
+            <AddToCartButton
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-6 py-3.5 text-sm font-extrabold whitespace-nowrap text-white shadow-[0_12px_28px_rgba(79,70,229,0.35)] transition hover:-translate-y-0.5 hover:brightness-105 sm:mt-6 sm:w-auto sm:px-8"
             >
               <CartIcon size={16} className="shrink-0" />
               <span>Add to Cart</span>
               <ArrowRightIcon size={16} className="shrink-0" />
-            </a>
+            </AddToCartButton>
 
             <div className="mt-5 flex flex-col items-center gap-3 text-xs font-semibold text-[#475569] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-5 sm:text-sm lg:justify-start">
               <span className="inline-flex max-w-full items-center gap-2 text-center sm:text-left">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useCart } from "./cart-context";
 import { CartIcon, LeafIcon } from "./icons";
 
 const links = [
@@ -19,6 +20,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#top");
+  const { count, setOpen: setCartOpen, addProduct } = useCart();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -94,22 +96,26 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-2.5 lg:ml-0">
-          <a
-            href="#order"
+          <button
+            type="button"
+            onClick={() => setCartOpen(true)}
             className="relative grid h-9 w-9 place-items-center rounded-full border border-[#e2e8f0] bg-white text-[#1e1b4b] sm:h-10 sm:w-10"
-            aria-label="Cart"
+            aria-label="Open cart"
           >
             <CartIcon size={17} />
-            <span className="absolute -top-1 -right-1 grid h-4 min-w-4 place-items-center rounded-full bg-[#7c3aed] px-1 text-[10px] font-bold text-white">
-              1
-            </span>
-          </a>
-          <a
-            href="#order"
+            {count > 0 ? (
+              <span className="absolute -top-1 -right-1 grid h-4 min-w-4 place-items-center rounded-full bg-[#7c3aed] px-1 text-[10px] font-bold text-white">
+                {count}
+              </span>
+            ) : null}
+          </button>
+          <button
+            type="button"
+            onClick={() => addProduct(1)}
             className="hidden rounded-full bg-[#1e1b4b] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#312e81] sm:inline-flex sm:px-5"
           >
             Order Now
-          </a>
+          </button>
           <button
             type="button"
             className="grid h-9 w-9 place-items-center rounded-xl border border-[#e2e8f0] bg-white sm:h-10 sm:w-10 lg:hidden"
@@ -149,13 +155,16 @@ export function Header() {
                 </a>
               );
             })}
-            <a
-              href="#order"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                addProduct(1);
+              }}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-[#1e1b4b] px-5 py-3 text-sm font-bold text-white"
             >
               Order Now
-            </a>
+            </button>
           </nav>
         </div>
       ) : null}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Caveat, Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -38,7 +39,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${sans.variable} ${display.variable} ${hand.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#f8fafc] text-[#1e1b4b]">{children}</body>
+      <body className="min-h-full bg-[#f8fafc] text-[#1e1b4b]">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

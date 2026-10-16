@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AddToCartButton } from "./add-to-cart-button";
 import {
   ArrowRightIcon,
   DropletIcon,
@@ -28,16 +29,16 @@ export function Hero() {
           fill
           preload
           unoptimized
-          className="hero-bg-photo object-cover object-[center_35%] sm:hidden"
+          className="object-cover object-[center_35%] sm:hidden"
           sizes="100vw"
         />
         {/* desktop / tablet landscape hero */}
         <Image
-          src="/heroimage.png"
+          src="/hero-desktop.jpg"
           alt=""
           fill
           unoptimized
-          className="hero-bg-photo hidden object-cover object-[72%_40%] sm:block lg:object-[68%_38%]"
+          className="hidden object-cover object-[72%_center] sm:block lg:object-[70%_center]"
           sizes="100vw"
         />
         {/* mobile: bottom fade for text readability */}
@@ -47,7 +48,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end px-4 py-7 sm:items-center sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-        <div className="w-full max-w-xl rounded-2xl bg-white/80 p-4 shadow-[0_10px_40px_rgba(15,23,42,0.06)] backdrop-blur-[1px] sm:rounded-3xl sm:bg-white/55 sm:p-7 sm:backdrop-blur-0 lg:bg-transparent lg:p-0 lg:shadow-none">
+        <div className="w-full max-w-xl rounded-2xl bg-white/80 p-4 shadow-[0_10px_40px_rgba(15,23,42,0.06)] sm:rounded-3xl sm:bg-white/55 sm:p-7 lg:bg-transparent lg:p-0 lg:shadow-none">
           <div className="inline-flex max-w-full rounded-full bg-[#fef3c7] px-3 py-1.5 text-[10px] font-extrabold tracking-[0.08em] text-[#92400e] uppercase shadow-sm sm:px-3.5 sm:text-[11px] sm:tracking-[0.1em]">
             Visibly brighter skin in weeks
           </div>
@@ -78,13 +79,13 @@ export function Hero() {
           </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <a
-              href="#order"
+            <AddToCartButton
+              label="Shop Now"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-7 py-3.5 text-sm font-extrabold text-white shadow-[0_12px_28px_rgba(79,70,229,0.35)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto"
             >
               Shop Now
               <ArrowRightIcon size={16} />
-            </a>
+            </AddToCartButton>
             <div className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#475569] shadow-sm ring-1 ring-[#e2e8f0] sm:w-auto sm:justify-start sm:text-sm">
               <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#ede9fe] text-[#7c3aed]">
                 <ShieldCheckIcon size={14} />
