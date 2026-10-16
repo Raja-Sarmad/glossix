@@ -18,29 +18,41 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[min(100svh-4.5rem,640px)] overflow-hidden bg-[#f7fafc] sm:min-h-[min(100svh-4.5rem,720px)]"
+      className="relative flex min-h-[min(100svh-4rem,520px)] overflow-hidden bg-[#f4f7fb] sm:min-h-[min(100svh-4.5rem,600px)] lg:min-h-[min(88svh,680px)]"
     >
       <div className="pointer-events-none absolute inset-0">
+        {/* mobile portrait hero */}
         <Image
-          src="/heroimage.jpg"
+          src="/hero-mobile.jpg"
           alt=""
           fill
           preload
           unoptimized
-          className="object-cover object-[78%_center] sm:object-[72%_center]"
+          className="hero-bg-photo object-cover object-[center_35%] sm:hidden"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/45 to-white/80 sm:from-transparent sm:via-transparent sm:to-transparent sm:bg-none" />
-        <div className="absolute inset-y-0 left-0 hidden w-full max-w-2xl bg-gradient-to-r from-white/75 via-white/35 to-transparent sm:block lg:w-[52%]" />
+        {/* desktop / tablet landscape hero */}
+        <Image
+          src="/heroimage.png"
+          alt=""
+          fill
+          unoptimized
+          className="hero-bg-photo hidden object-cover object-[72%_40%] sm:block lg:object-[68%_38%]"
+          sizes="100vw"
+        />
+        {/* mobile: bottom fade for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#f8fafc] via-[#f8fafc]/75 to-transparent sm:hidden" />
+        {/* desktop: soft left wash — product side stays clear */}
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#f8fafc]/92 via-[#f8fafc]/45 to-transparent sm:block lg:w-[58%]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end px-4 py-8 sm:items-center sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="w-full max-w-xl rounded-2xl bg-white/90 p-4 shadow-[0_8px_40px_rgba(15,23,42,0.08)] sm:rounded-3xl sm:bg-white/70 sm:p-7 lg:bg-transparent lg:p-0 lg:shadow-none">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end px-4 py-7 sm:items-center sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="w-full max-w-xl rounded-2xl bg-white/80 p-4 shadow-[0_10px_40px_rgba(15,23,42,0.06)] backdrop-blur-[1px] sm:rounded-3xl sm:bg-white/55 sm:p-7 sm:backdrop-blur-0 lg:bg-transparent lg:p-0 lg:shadow-none">
           <div className="inline-flex max-w-full rounded-full bg-[#fef3c7] px-3 py-1.5 text-[10px] font-extrabold tracking-[0.08em] text-[#92400e] uppercase shadow-sm sm:px-3.5 sm:text-[11px] sm:tracking-[0.1em]">
             Visibly brighter skin in weeks
           </div>
 
-          <h1 className="mt-4 text-[clamp(2rem,8vw,3.9rem)] leading-[1.08] font-extrabold tracking-[-0.03em] text-[#1e1b4b] sm:mt-5">
+          <h1 className="mt-4 text-[clamp(1.85rem,7vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.03em] text-[#1e1b4b] sm:mt-5">
             Your Natural Glow,{" "}
             <span className="bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">
               Reimagined

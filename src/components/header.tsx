@@ -77,7 +77,7 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="mx-auto hidden items-center gap-5 xl:gap-7 lg:flex">
+        <nav className="mx-auto hidden items-center gap-4 xl:gap-7 lg:flex">
           {links.map((link) => {
             const isActive = active === link.href;
             return (

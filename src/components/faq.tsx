@@ -44,7 +44,7 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="scroll-mt-20 bg-[#f8fafc] px-4 pt-6 pb-12 sm:px-6 sm:pt-8 sm:pb-14 lg:px-8"
+      className="scroll-mt-20 bg-[#f8fafc] px-3 pt-6 pb-10 sm:px-6 sm:pt-8 sm:pb-12 lg:px-8"
     >
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
