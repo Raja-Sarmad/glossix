@@ -146,7 +146,7 @@ export function HowItWorks() {
               sizes="(max-width: 1024px) 88vw, 34vw"
               unoptimized
             />
-            <div className="-mt-1 flex w-full justify-center sm:-mt-2">
+            <div className="relative z-20 -mt-6 flex w-full justify-center sm:-mt-8 lg:-mt-10">
               <AddToCartButton
                 className="inline-flex w-full max-w-[220px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-6 py-2.5 text-sm font-extrabold text-white shadow-[0_12px_28px_rgba(79,70,229,0.3)] transition hover:-translate-y-0.5 hover:brightness-105"
               >
