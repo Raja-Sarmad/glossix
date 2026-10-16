@@ -5,7 +5,7 @@ type RevealProps = {
   className?: string;
 };
 
-/** Passthrough wrapper — no hide/show animation (was causing blank sections). */
+/** Layout wrapper only — never hides content (opacity animations caused blank sections). */
 export function Reveal({ children, className = "" }: RevealProps) {
   return <div className={className}>{children}</div>;
 }

@@ -1,64 +1,88 @@
 import Image from "next/image";
 
+const highlights = [
+  "Helps brighten and even skin tone from within",
+  "Supports clearer-looking, calmer skin",
+  "500mg glutathione with collagen & vitamin C",
+  "Simple 2× daily ritual — 30 capsules",
+];
+
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden bg-[#eef6fc] text-[#152238]"
-    >
+    <section id="top" className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_75%_30%,rgba(31,143,196,0.22),transparent_65%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_10%_85%,rgba(232,184,74,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#f7fbfe_0%,#e8f3fb_45%,#f3f7fb_100%)]" />
+        <div className="absolute inset-0 bg-[#f3f8fc]" />
+        <div className="absolute inset-y-0 right-0 w-full bg-[linear-gradient(105deg,#f3f8fc_0%,#f3f8fc_50%,#e4f1f9_50%,#d8ebf6_100%)] lg:w-auto lg:left-[50%]" />
+        <div className="absolute top-0 right-0 h-[70%] w-[55%] bg-[radial-gradient(ellipse_at_70%_30%,rgba(42,155,199,0.22),transparent_60%)]" />
+        <div className="absolute bottom-0 left-0 h-[40%] w-[40%] bg-[radial-gradient(ellipse_at_20%_90%,rgba(201,162,39,0.12),transparent_60%)]" />
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 sm:px-8 lg:min-h-[calc(100svh-4.25rem)] lg:grid-cols-2 lg:gap-12 lg:py-16">
-        <div className="order-2 text-center lg:order-1 lg:text-left">
-          <div className="hero-in d1 inline-flex items-center gap-2 rounded-full border border-[#1f8fc4]/25 bg-white/80 px-3.5 py-1.5 text-[12px] font-bold tracking-[0.12em] text-[#0c2d5c] uppercase shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#e8b84a]" />
-            Dietary supplement · 30 capsules
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:py-14">
+        {/* LEFT — story + content */}
+        <div className="order-2 lg:order-1">
+          <div className="hero-in d1 inline-flex items-center gap-2 rounded-full border border-[#c9a227]/35 bg-white px-3.5 py-1.5 text-[11px] font-bold tracking-[0.14em] text-[#0a2756] uppercase shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#c9a227]" />
+            Inovics Healthcare · Premium formula
           </div>
 
-          <h1 className="hero-in d2 mt-5 text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.1] font-extrabold tracking-[-0.035em] text-[#0c2d5c]">
-            Brighter skin,
-            <br />
-            <span className="text-[#c9952e]">from within.</span>
+          <h1 className="hero-in d2 brand-mark mt-4 text-[clamp(3rem,6.5vw,4.6rem)] leading-[0.98] text-[#0a2756]">
+            Glossix
           </h1>
 
-          <p className="hero-in d3 mx-auto mt-5 max-w-md text-[1.08rem] leading-8 text-[#3d4d63] lg:mx-0">
-            Glossix is a glutathione complex with collagen and vitamin C —
-            expert nutrition for a clearer, calmer glow.
+          <p className="hero-in d3 mt-3 text-[clamp(1.25rem,2.5vw,1.6rem)] font-semibold tracking-[-0.02em] text-[#314860]">
+            Brighter skin,{" "}
+            <span className="gold-text">from within.</span>
           </p>
 
-          <div className="hero-in d4 mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+          <p className="hero-in d3 mt-4 max-w-lg text-[1.05rem] leading-7 text-[#4a5d75]">
+            A glutathione complex made to support a clearer, more even glow —
+            with collagen and vitamin C for everyday skin nutrition your clients
+            can understand.
+          </p>
+
+          <ul className="hero-in d4 mt-6 max-w-lg space-y-2.5">
+            {highlights.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-[0.98rem] font-medium text-[#24384f]"
+              >
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#0a2756] text-[10px] font-extrabold text-[#e4c15a]">
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="hero-in d4 mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#benefits"
-              className="rounded-full bg-[#0c2d5c] px-7 py-3.5 text-sm font-extrabold text-white shadow-[0_12px_28px_rgba(12,45,92,0.22)] transition hover:-translate-y-0.5 hover:bg-[#071829]"
+              className="rounded-full bg-gradient-to-b from-[#e4c15a] to-[#c9a227] px-7 py-3.5 text-sm font-extrabold text-[#061a38] shadow-[0_12px_28px_rgba(201,162,39,0.32)] transition hover:-translate-y-0.5 hover:brightness-105"
             >
-              See benefits
+              Explore benefits
             </a>
             <a
               href="#formula"
-              className="rounded-full border border-[#0c2d5c]/15 bg-white px-7 py-3.5 text-sm font-extrabold text-[#0c2d5c] shadow-sm transition hover:border-[#1f8fc4]/40 hover:bg-[#f7fbfe]"
+              className="rounded-full border border-[#0a2756]/15 bg-white px-7 py-3.5 text-sm font-extrabold text-[#0a2756] shadow-sm transition hover:border-[#2a9bc7]/40"
             >
-              See formula
+              View formula
             </a>
           </div>
 
-          <div className="hero-in d4 mt-9 grid grid-cols-3 gap-2 border-t border-[#0c2d5c]/10 pt-7 sm:max-w-md sm:gap-3 lg:max-w-none">
+          <div className="hero-in d4 mt-7 grid max-w-lg grid-cols-3 gap-2">
             {[
               ["500mg", "Glutathione"],
               ["4", "Actives"],
-              ["2x", "Daily"],
+              ["2×", "Daily"],
             ].map(([value, label]) => (
               <div
                 key={label}
-                className="rounded-2xl border border-[#d7e0ea] bg-white px-2 py-3 text-center shadow-sm sm:px-3"
+                className="rounded-xl border border-[#c9d8e6] bg-white/90 px-2 py-3 text-center shadow-sm"
               >
-                <p className="text-xl font-extrabold text-[#0c2d5c] sm:text-2xl">
+                <p className="text-lg font-extrabold text-[#0a2756] sm:text-xl">
                   {value}
                 </p>
-                <p className="mt-0.5 text-[11px] font-semibold tracking-wide text-[#3d4d63] uppercase sm:text-xs">
+                <p className="mt-0.5 text-[10px] font-semibold tracking-wide text-[#4a5d75] uppercase sm:text-[11px]">
                   {label}
                 </p>
               </div>
@@ -66,27 +90,50 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-in d3 order-1 lg:order-2">
-          <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[400px]">
-            <div className="animate-glow absolute top-1/2 left-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(31,143,196,0.28),transparent_68%)]" />
+        {/* RIGHT — product home */}
+        <div className="order-1 lg:order-2">
+          <div className="hero-in d2 relative mx-auto w-full max-w-[420px] lg:max-w-[440px]">
+            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#0a2756] via-[#0d356e] to-[#143f7a] px-5 pt-8 pb-6 shadow-[0_30px_70px_rgba(10,39,86,0.28)] sm:px-7 sm:pt-10 sm:pb-7">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_35%,rgba(80,180,230,0.35),transparent_65%)]" />
+              <div className="pointer-events-none absolute -top-10 right-[-10%] h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(228,193,90,0.2),transparent_70%)]" />
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-white bg-white/90 p-6 shadow-[0_24px_60px_rgba(12,45,92,0.12)] sm:p-8">
-              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#e8f3fb] to-transparent" />
-              <Image
-                src="/product.png"
-                alt="Glossix bottle and box — 30 capsules"
-                width={570}
-                height={606}
-                preload
-                loading="eager"
-                unoptimized
-                className="animate-float relative mx-auto h-auto w-[88%] drop-shadow-[0_18px_35px_rgba(12,45,92,0.18)]"
-              />
-              <div className="relative mt-4 flex items-center justify-between gap-3 rounded-xl bg-[#f3f6fa] px-3 py-2.5">
-                <p className="text-sm font-bold text-[#0c2d5c]">Glossix</p>
-                <p className="text-xs font-semibold text-[#1f8fc4]">
+              <div className="relative z-10 text-center">
+                <p className="text-[11px] font-bold tracking-[0.18em] text-[#e4c15a] uppercase">
                   Skin whitening support
                 </p>
+                <p className="mt-1 text-sm font-semibold text-white/80">
+                  Bottle + box · ready for clients
+                </p>
+              </div>
+
+              <div className="relative z-10 mx-auto mt-4 w-[85%] max-w-[300px]">
+                <Image
+                  src="/glossix.png"
+                  alt="Glossix bottle and box — 30 capsules"
+                  width={1251}
+                  height={1091}
+                  preload
+                  loading="eager"
+                  unoptimized
+                  className="animate-float relative mx-auto h-auto w-full drop-shadow-[0_24px_40px_rgba(0,0,0,0.35)]"
+                />
+              </div>
+
+              <div className="relative z-10 mt-5 grid grid-cols-2 gap-2">
+                <div className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
+                  <p className="text-sm font-extrabold text-white">30 capsules</p>
+                  <p className="mt-0.5 text-[11px] font-medium text-white/70">
+                    Full pack size
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
+                  <p className="text-sm font-extrabold text-[#e4c15a]">
+                    Premium quality
+                  </p>
+                  <p className="mt-0.5 text-[11px] font-medium text-white/70">
+                    Clinician-ready story
+                  </p>
+                </div>
               </div>
             </div>
           </div>

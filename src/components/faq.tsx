@@ -41,8 +41,11 @@ export function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-[#f3f6fa] px-5 py-16 sm:px-8 sm:py-20">
-      <div className="mx-auto max-w-3xl">
+    <section
+      id="faq"
+      className="scroll-mt-24 bg-[#eaf3f8] px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
+    >
+      <div className="mx-auto flex max-w-4xl flex-col gap-6">
         <div className="section-head">
           <p className="section-kicker">FAQ</p>
           <h2 className="section-title">Common questions, clear answers</h2>
@@ -51,13 +54,17 @@ export function FAQ() {
           </p>
         </div>
 
-        <div className="mt-8 space-y-3">
+        <div className="space-y-2.5">
           {faqs.map((item, index) => {
             const isOpen = open === index;
             return (
               <div
                 key={item.q}
-                className="overflow-hidden rounded-2xl border border-[#d7e0ea] bg-white"
+                className={`overflow-hidden rounded-2xl border bg-white shadow-[0_6px_20px_rgba(10,39,86,0.04)] transition ${
+                  isOpen
+                    ? "border-[#c9a227]/40 shadow-[0_12px_28px_rgba(10,39,86,0.08)]"
+                    : "border-[#c9d8e6]/80"
+                }`}
               >
                 <button
                   type="button"
@@ -65,12 +72,14 @@ export function FAQ() {
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[1.05rem] font-bold text-[#152238]">
+                  <span className="text-[1.05rem] font-bold text-[#0a2756]">
                     {item.q}
                   </span>
                   <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#f3f6fa] text-lg font-bold text-[#0c2d5c] transition-transform ${
-                      isOpen ? "rotate-45" : ""
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-lg font-bold transition-transform ${
+                      isOpen
+                        ? "rotate-45 bg-[#0a2756] text-[#e4c15a]"
+                        : "bg-[#eaf3f8] text-[#0a2756]"
                     }`}
                   >
                     +
@@ -82,7 +91,7 @@ export function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="border-t border-[#d7e0ea] px-5 py-4 text-[1.02rem] leading-7 text-[#3d4d63]">
+                    <p className="border-t border-[#c9d8e6] px-5 py-4 text-[1.02rem] leading-7 text-[#4a5d75]">
                       {item.a}
                     </p>
                   </div>
