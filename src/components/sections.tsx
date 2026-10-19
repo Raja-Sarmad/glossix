@@ -128,7 +128,7 @@ export function HowItWorks() {
       <div className="mx-auto grid w-full max-w-[92rem] items-center gap-5 sm:gap-6 lg:grid-cols-[1.1fr_0.95fr_1.1fr] lg:gap-5 xl:gap-6">
         {/* product — top on mobile, left on desktop */}
         <div className="relative order-1 mx-auto w-full max-w-[22rem] lg:max-w-none">
-          <p className="font-hand absolute top-[26%] left-0 z-20 text-[1.45rem] leading-[1.05] font-semibold text-[#7c3aed] sm:top-[28%] sm:left-1 sm:text-[1.9rem] lg:top-[30%] lg:left-2 lg:text-[2.15rem]">
+          <p className="font-hand absolute top-[8%] left-0 z-20 text-[1.45rem] leading-[1.05] font-semibold text-[#7c3aed] sm:top-[10%] sm:left-1 sm:text-[1.9rem] lg:top-[12%] lg:left-2 lg:text-[2.15rem]">
             Your Glow
             <br />
             Starts Here
